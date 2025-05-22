@@ -245,9 +245,7 @@ const CircuitDragDrop = () => {
         {/* Título */}
         <div className="title-section">
           <h2>Tag the different parts of a circuit</h2>
-          {isMobile && (
-            <p className="mobile-instruction">Arrastra cada componente a su posición correcta en el circuito</p>
-          )}
+          
         </div>
 
         <div className="game-content">
