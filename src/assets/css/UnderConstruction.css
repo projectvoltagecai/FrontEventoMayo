@@ -1,39 +1,42 @@
 .under-construction-container {
-  min-height: 100dvh;
+  text-align: center;
+  padding: 2rem;
+  background-color: #000; /* fondo oscuro para resaltar los colores */
+  color: #77FF00;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #eef2ff, #dbeafe);
-  padding: 2rem;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.construction-image {
-  width: clamp(200px, 40vw, 350px);
-  margin-bottom: 2rem;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.construction-title {
+.title {
   font-size: 2.5rem;
-  color: #1d4ed8; /* Azul moderno */
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  color: #77FF00;
 }
 
-.construction-text {
-  font-size: 1.25rem;
-  color: #334155;
-  max-width: 600px;
-  line-height: 1.5;
+.subtitle {
+  font-size: 1.2rem;
+  color: #00BFFF; /* azul eléctrico */
+  margin-bottom: 2rem;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.main-image {
+  width: clamp(250px, 50vw, 400px);
+  height: auto;
+  filter: drop-shadow(0 0 10px #77FF00);
+}
+
+.voltage {
+  width: clamp(50px, 10vw, 100px);
+  height: auto;
+  filter: drop-shadow(0 0 8px #00BFFF);
 }

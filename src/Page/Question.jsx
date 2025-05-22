@@ -28,7 +28,7 @@ function Question() {
     setShowModal(false)
   }
   const getRedirectRoute = () => {
-    return isCorrect ? '/Drag-Drop' : '/try-again'
+    return isCorrect ? '/Drag-Drop' : '/fin'
   }
 
   return (

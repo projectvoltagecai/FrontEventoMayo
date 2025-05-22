@@ -6,6 +6,7 @@ import Login from "./Page/Login";
 import Lesson1 from "./Page/Lesson1";
 import Question from "./Page/Question";
 import CircuitDragDrop from "./Page/CircuitDragDrop";
+import UnderConstruction from "./Page/UnderConstruction";
 
 
 
@@ -20,6 +21,8 @@ function App() {
       <Route path='/Lesson1' element={<Lesson1/>}/>
       <Route path='/Question' element={<Question/>}/>
       <Route path='/Drag-Drop' element={<CircuitDragDrop/>}/>
+      <Route path='/fin' element={<UnderConstruction/>}/>
+
       
     </Routes>
   )

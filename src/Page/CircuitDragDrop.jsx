@@ -43,7 +43,7 @@ const CircuitDragDrop = () => {
     if (score === 4) {
       const timer = setTimeout(() => {
         // Cambia '/next-page' por la ruta a la que quieres redirigir
-        navigate('/next-page');
+        navigate('/fin');
       }, 2000); // Espera 2 segundos antes de redirigir
       
       return () => clearTimeout(timer);
@@ -74,11 +74,25 @@ const CircuitDragDrop = () => {
     setDraggedItem(null);
   };
 
-  // Eventos táctiles para móvil
+  // Eventos táctiles para móvil - Drag & Drop real
   const handleTouchStart = (e, item) => {
     if (!isMobile) return;
     
     setTouchItem(item);
+    const touch = e.touches[0];
+    
+    // Crear elemento visual que sigue al dedo
+    const dragElement = e.currentTarget.cloneNode(true);
+    dragElement.id = 'drag-preview';
+    dragElement.style.position = 'fixed';
+    dragElement.style.pointerEvents = 'none';
+    dragElement.style.zIndex = '9999';
+    dragElement.style.opacity = '0.8';
+    dragElement.style.transform = 'scale(0.9)';
+    dragElement.style.left = (touch.clientX - 60) + 'px';
+    dragElement.style.top = (touch.clientY - 20) + 'px';
+    
+    document.body.appendChild(dragElement);
     e.preventDefault();
   };
 
@@ -87,14 +101,20 @@ const CircuitDragDrop = () => {
     
     e.preventDefault();
     const touch = e.touches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const dragElement = document.getElementById('drag-preview');
     
-    // Resaltar zona de drop
+    if (dragElement) {
+      dragElement.style.left = (touch.clientX - 60) + 'px';
+      dragElement.style.top = (touch.clientY - 20) + 'px';
+    }
+    
+    // Resaltar zona de drop sin mostrar cuál es la correcta
     document.querySelectorAll('.drop-zone').forEach(zone => {
       zone.classList.remove('touch-hover');
     });
     
-    if (element && element.classList.contains('drop-zone')) {
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (element && element.classList.contains('drop-zone') && !element.classList.contains('filled')) {
       element.classList.add('touch-hover');
     }
   };
@@ -106,13 +126,23 @@ const CircuitDragDrop = () => {
     const touch = e.changedTouches[0];
     const element = document.elementFromPoint(touch.clientX, touch.clientY);
     
-    if (element && element.classList.contains('drop-zone')) {
+    // Remover elemento de arrastre visual
+    const dragElement = document.getElementById('drag-preview');
+    if (dragElement) {
+      document.body.removeChild(dragElement);
+    }
+    
+    if (element && element.classList.contains('drop-zone') && !element.classList.contains('filled')) {
       const zoneId = element.dataset.zoneId;
+      
+      // Permitir colocar cualquier componente en cualquier zona (el usuario debe adivinar)
+      setDroppedItems(prev => ({
+        ...prev,
+        [zoneId]: touchItem
+      }));
+      
+      // Solo sumar puntos si es correcto, pero no mostrar feedback inmediato
       if (touchItem.id === zoneId) {
-        setDroppedItems(prev => ({
-          ...prev,
-          [zoneId]: touchItem
-        }));
         setScore(prev => prev + 1);
       }
     }
@@ -129,6 +159,12 @@ const CircuitDragDrop = () => {
     setScore(0);
     setDraggedItem(null);
     setTouchItem(null);
+    
+    // Limpiar cualquier elemento de arrastre que pueda quedar
+    const dragElement = document.getElementById('drag-preview');
+    if (dragElement) {
+      document.body.removeChild(dragElement);
+    }
   };
 
   return (
@@ -153,7 +189,9 @@ const CircuitDragDrop = () => {
         {/* Título */}
         <div className="title-section">
           <h2>Tag the different parts of a circuit</h2>
-         
+          {isMobile && (
+            <p className="mobile-instruction">Arrastra cada componente a su posición correcta en el circuito</p>
+          )}
         </div>
 
         <div className="game-content">
@@ -170,7 +208,7 @@ const CircuitDragDrop = () => {
             {dropZones.map(zone => (
               <div
                 key={zone.id}
-                className={`drop-zone ${droppedItems[zone.id] ? 'filled' : ''} ${touchItem && touchItem.id === zone.id ? 'touch-target' : ''}`}
+                className={`drop-zone ${droppedItems[zone.id] ? 'filled' : ''}`}
                 style={{
                   left: zone.x,
                   top: zone.y,
@@ -180,16 +218,6 @@ const CircuitDragDrop = () => {
                 data-zone-id={zone.id}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, zone.id)}
-                onTouchStart={(e) => {
-                  if (touchItem && touchItem.id === zone.id) {
-                    setDroppedItems(prev => ({
-                      ...prev,
-                      [zone.id]: touchItem
-                    }));
-                    setScore(prev => prev + 1);
-                    setTouchItem(null);
-                  }
-                }}
               >
                 {droppedItems[zone.id] && (
                   <span className="dropped-label">
@@ -207,7 +235,7 @@ const CircuitDragDrop = () => {
                 !droppedItems[component.id] && (
                   <div
                     key={component.id}
-                    className={`component-item ${touchItem && touchItem.id === component.id ? 'selected' : ''}`}
+                    className={`component-item`}
                     draggable={!isMobile}
                     onDragStart={(e) => handleDragStart(e, component)}
                     onTouchStart={(e) => handleTouchStart(e, component)}
@@ -216,9 +244,6 @@ const CircuitDragDrop = () => {
                     style={{ backgroundColor: component.color }}
                   >
                     {component.name}
-                    {touchItem && touchItem.id === component.id && (
-                      <span className="touch-indicator">👆 Seleccionado</span>
-                    )}
                   </div>
                 )
               ))}
@@ -252,7 +277,7 @@ const CircuitDragDrop = () => {
       </div>
       
       {/* Footer fuera del contenedor principal */}
-     
+      <Footer />
     </div>
   );
 };

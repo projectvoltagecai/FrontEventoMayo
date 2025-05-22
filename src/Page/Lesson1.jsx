@@ -51,7 +51,7 @@ function Lesson1() {
             <p>ID 9999999</p>
             <p>Tecnología en Animación Digital</p>
             <p>Ficha: 2626891</p>
-            <img src={user} alt='User Avatar' />
+            <img src={user} alt='User Avatar' className='user' />
           </div>
 
           <div className='challenges-box'>

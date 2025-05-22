@@ -12,6 +12,10 @@ body {
   overflow-x: auto;
 }
 
+.user{
+  transform: scale(1.8);
+  transform-origin: center;
+}
 
 /* Aplica box-sizing border-box a todos los elementos */
 * {

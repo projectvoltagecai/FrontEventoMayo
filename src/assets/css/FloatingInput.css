@@ -12,6 +12,7 @@
   border-radius: 20px;
   background: none ;
   outline: none;
+  color: white;
 }
 
 .form-group input::placeholder {
@@ -35,5 +36,5 @@
   top: -10px;
   left: 15px;
   font-size: 12px;
-  color: #114a96;
+  color: #eef3f9;
 }

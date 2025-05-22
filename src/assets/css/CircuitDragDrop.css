@@ -87,8 +87,7 @@ body {
 /* Área del circuito */
 .circuit-area {
   position: relative;
-    background-color: #1c1b1b;
-
+  background: rgb(24, 24, 24);
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -152,18 +151,9 @@ body {
 }
 
 .drop-zone.touch-target {
-  border-color: #ff6b35;
-  background: rgba(255, 107, 53, 0.2);
-  animation: pulse-target 1s infinite;
-}
-
-@keyframes pulse-target {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+  animation: none;
 }
 
 .dropped-label {
@@ -181,8 +171,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-    background-color: #1c1b1b;
-
+  background: rgb(5, 5, 5);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -224,32 +213,48 @@ body {
 }
 
 .component-item.selected {
-  background: #ff6b35;
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-  animation: pulse-selected 1s infinite;
+  background: #5ba0f2;
+  box-shadow: 0 6px 20px rgba(91, 160, 242, 0.4);
+  animation: none;
 }
 
-@keyframes pulse-selected {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
+/* Elemento de arrastre visual en móvil */
+#drag-preview {
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  transition: none !important;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.touch-indicator {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ff6b35;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 10px;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+/* Efectos mejorados para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .component-item {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .drop-zone {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .component-item:active {
+    transform: scale(0.95);
+    background: #5ba0f2;
+  }
+  
+  .drop-zone::before {
+    content: 'Drop here';
+  }
+  
+  .drop-zone.touch-hover {
+    border-color: #007bff;
+    background: rgba(0, 123, 255, 0.2);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
 }
 
 /* Mascota */
@@ -272,8 +277,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-    background-color: #1c1b1b;
-
+  background: #060606;
   padding: 20px;
   border-radius: 15px;
   border: 1px solid #e9ecef;
