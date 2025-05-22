@@ -3,6 +3,7 @@ import logo from '/VoltageName.png'
 import bulbieImage from '/Bulby.png'
 import user from '/Inge.png'
 import { Link } from "react-router-dom"
+import Footer from '../Components/Footer'
 
 function Lesson1() {
   return (
@@ -64,6 +65,7 @@ function Lesson1() {
 
           <button className='level-button'>LEVEL 1</button>
         </div>
+        <Footer/>
       </div>
     </>
   )

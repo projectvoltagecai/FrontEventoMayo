@@ -3,15 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  overflow-y: auto;
+}
 
 /* Contenido principal */
 .game-container {
-  height: 100vh;
+     background-color: #1c1b1b;
+
+  min-height: 100vh;
+  height: auto; /* <--- permite crecer según contenido */
+  overflow-y: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
+     background-color: #1c1b1b;
+
   font-family: Arial, sans-serif;
 }
 
@@ -53,10 +61,10 @@
 
 /* Sección central */
 .main-content {
-  display: flex;
+   display: flex;
   flex: 1;
-  padding: 2rem;
-  align-items: center;
+  padding: 2rem 2rem 0; /* arriba 1rem, derecha/izquierda 2rem, abajo 0 */
+  align-items: flex-start; /* empuja contenido hacia arriba */
   gap: 2rem;
   
 }
@@ -71,9 +79,26 @@
 }
 
 .character {
-  width: clamp(200px, 25vw, 350px);
+  width: clamp(200px, 25vw, 450px);
   height: auto;
-  max-width: 350px;
+  max-width: 450px;
+  animation: flamePulse 1.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 20px orange);
+}
+
+@keyframes flamePulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px orange);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px red) drop-shadow(0 0 10px orange);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px orange);
+  }
 }
 
 /* Sección derecha: tarjetas y pregunta (CORREGIDO) */
@@ -89,9 +114,9 @@
 
 .title-section {
   text-align: center;
-  margin: 15px;
+  margin: 45px;
   background: #e3f2fd;
- 
+
   border-radius: 15px;
   border: 1px solid #bbdefb;
 }

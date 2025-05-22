@@ -6,6 +6,7 @@ import logo from '/VOLTAGE.png'
 import '../assets/css/Question.css'
 import ModalQ from '../Components/ModalQ'
 import { useState } from 'react'
+import Footer from '../Components/Footer'
 
 
 function Question() {
@@ -72,6 +73,7 @@ function Question() {
      
 
       {showModal && <ModalQ isCorrect={isCorrect} onClose={closeModal}   redirectRoute={getRedirectRoute()} />}
+    <Footer/>
     </div>
   )
 }

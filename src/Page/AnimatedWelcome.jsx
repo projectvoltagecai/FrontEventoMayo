@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import logo from '/VOLTAGE.png'
+import logo from '/VoltageName.png'
 import "../assets/css/AnimatedWelcome.css"
 import { motion } from 'framer-motion'
 import Particles from '@tsparticles/react'

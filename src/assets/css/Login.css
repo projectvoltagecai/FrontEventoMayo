@@ -1,5 +1,6 @@
 /* Contenedor principal para centrar y hacer wrap */
 .contenedor-principal-inicio-sesion {
+    background-color: #1c1b1b;
     padding: 0;
     margin: 0;
     display: flex;
@@ -10,6 +11,10 @@
     font-family: 'Roboto', sans-serif;
     flex-wrap: wrap;
 }
+body {
+  overflow-y: auto;
+}
+
 
 /* Contenedor que agrupa mascota y formulario */
 .contenedor-inicio-sesion {
@@ -42,6 +47,7 @@
     flex-direction: column;
     border-left: 2px solid #114a96;
     height: 85px;
+    color: white;
     padding-left: 20px;
 }
 

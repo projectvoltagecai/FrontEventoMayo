@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../assets/css/CircuitDragDrop.css"
+import Footer from '../Components/Footer';
 
 const CircuitDragDrop = () => {
   const [draggedItem, setDraggedItem] = useState(null);
@@ -52,6 +53,7 @@ const CircuitDragDrop = () => {
   };
 
   return (
+    <>
     <div className="circuit-container">
       {/* Header con estadísticas */}
       <div className="stats-header">
@@ -148,7 +150,10 @@ const CircuitDragDrop = () => {
           </div>
         )}
       </div>
+     
     </div>
+   
+    </>
   );
 };
 

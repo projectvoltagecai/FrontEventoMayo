@@ -5,6 +5,7 @@ import FloatingInput from "../Components/FloatingInput";
 import NavigationButtons from "../Components/NavigationButtons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 
 function Login() {
@@ -77,7 +78,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-           
+           <Footer/>
         </div>
     );
 }

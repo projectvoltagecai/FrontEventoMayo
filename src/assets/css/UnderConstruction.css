@@ -1,0 +1,39 @@
+.under-construction-container {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #eef2ff, #dbeafe);
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.construction-image {
+  width: clamp(200px, 40vw, 350px);
+  margin-bottom: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.construction-title {
+  font-size: 2.5rem;
+  color: #1d4ed8; /* Azul moderno */
+  margin-bottom: 1rem;
+}
+
+.construction-text {
+  font-size: 1.25rem;
+  color: #334155;
+  max-width: 600px;
+  line-height: 1.5;
+}
