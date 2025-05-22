@@ -38,13 +38,60 @@ const CircuitDragDrop = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Prevenir scroll y otros gestos durante el arrastre
+  useEffect(() => {
+    const preventScroll = (e) => {
+      if (touchItem || draggedItem) {
+        e.preventDefault();
+      }
+    };
+
+    const preventDefault = (e) => {
+      if (touchItem || draggedItem) {
+        e.preventDefault();
+      }
+    };
+
+    if (touchItem || draggedItem) {
+      // Prevenir scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      
+      // Agregar listeners para prevenir gestos
+      document.addEventListener('touchmove', preventScroll, { passive: false });
+      document.addEventListener('touchstart', preventDefault, { passive: false });
+      window.addEventListener('scroll', preventDefault, { passive: false });
+    } else {
+      // Restaurar scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      
+      // Remover listeners
+      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('touchstart', preventDefault);
+      window.removeEventListener('scroll', preventDefault);
+    }
+
+    return () => {
+      // Cleanup al desmontar
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('touchstart', preventDefault);
+      window.removeEventListener('scroll', preventDefault);
+    };
+  }, [touchItem, draggedItem]);
+
   // Redirigir cuando se complete el juego
   useEffect(() => {
     if (score === 4) {
       const timer = setTimeout(() => {
         // Cambia '/next-page' por la ruta a la que quieres redirigir
         navigate('/fin');
-      }, 2000); // Espera 2 segundos antes de redirigir
+      }, 4000); // Espera 2 segundos antes de redirigir
       
       return () => clearTimeout(timer);
     }
@@ -78,6 +125,10 @@ const CircuitDragDrop = () => {
   const handleTouchStart = (e, item) => {
     if (!isMobile) return;
     
+    // Prevenir comportamientos por defecto inmediatamente
+    e.preventDefault();
+    e.stopPropagation();
+    
     setTouchItem(item);
     const touch = e.touches[0];
     
@@ -93,13 +144,15 @@ const CircuitDragDrop = () => {
     dragElement.style.top = (touch.clientY - 20) + 'px';
     
     document.body.appendChild(dragElement);
-    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
     if (!touchItem || !isMobile) return;
     
+    // Prevenir scroll y otros comportamientos
     e.preventDefault();
+    e.stopPropagation();
+    
     const touch = e.touches[0];
     const dragElement = document.getElementById('drag-preview');
     
@@ -122,7 +175,10 @@ const CircuitDragDrop = () => {
   const handleTouchEnd = (e) => {
     if (!touchItem || !isMobile) return;
     
+    // Prevenir comportamientos por defecto
     e.preventDefault();
+    e.stopPropagation();
+    
     const touch = e.changedTouches[0];
     const element = document.elementFromPoint(touch.clientX, touch.clientY);
     
@@ -268,16 +324,14 @@ const CircuitDragDrop = () => {
           </button>
           {score === 4 && (
             <div className="success-message">
-              ¡Excelente! Has completado el circuito correctamente 🎉
+             Well done!🎉
               <br />
-              <span className="redirect-message">Redirigiendo en 2 segundos...</span>
             </div>
           )}
         </div>
       </div>
       
-      {/* Footer fuera del contenedor principal */}
-      <Footer />
+      
     </div>
   );
 };

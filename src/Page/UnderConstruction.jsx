@@ -7,7 +7,7 @@ import voltageIcon from '/VoltageName.png'; // Ícono de voltaje (rayos o símbo
 const UnderConstruction = () => {
   return (
     <div className="under-construction-container">
-      <h1 className="title">App in Progress</h1>
+      <h1 className="title">App still in progress</h1>
       <p className="subtitle">More vocabulary exercises coming soon...</p>
 
       <div className="image-row">

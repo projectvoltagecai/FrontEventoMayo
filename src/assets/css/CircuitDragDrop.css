@@ -9,6 +9,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* Prevenir scroll horizontal no deseado */
+  overflow-x: hidden;
 }
 
 .circuit-container {
@@ -20,6 +22,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background-color: #1c1b1b;
   box-sizing: border-box;
+  /* Prevenir zoom en doble tap */
+  touch-action: manipulation;
 }
 
 /* Header con estadísticas */
@@ -94,6 +98,8 @@ body {
   border: 2px solid #e9ecef;
   overflow: hidden;
   min-height: 400px;
+  /* Prevenir gestos táctiles no deseados */
+  touch-action: none;
 }
 
 /* Imagen del circuito */
@@ -122,7 +128,13 @@ body {
   font-size: 12px;
   font-weight: bold;
   color: #6c757d;
-  touch-action: manipulation;
+  /* Configuraciones para táctil */
+  touch-action: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .drop-zone::before {
@@ -198,7 +210,14 @@ body {
   border: none;
   font-size: 14px;
   position: relative;
-  touch-action: manipulation;
+  /* Configuraciones específicas para táctil */
+  touch-action: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  /* Prevenir selección de texto */
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .component-item:hover {
@@ -233,12 +252,19 @@ body {
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: none;
   }
   
   .drop-zone {
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+  }
+  
+  .circuit-area {
+    touch-action: none;
+    -webkit-overflow-scrolling: touch;
   }
   
   .component-item:active {
@@ -255,6 +281,28 @@ body {
     background: rgba(0, 123, 255, 0.2);
     transform: translate(-50%, -50%) scale(1.05);
   }
+  
+  /* Prevenir gestos de zoom y pan */
+  body {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Durante el arrastre, bloquear toda interacción */
+  body.dragging {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    touch-action: none;
+  }
+}
+
+/* Clase para aplicar cuando se está arrastrando */
+.no-scroll {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  touch-action: none !important;
 }
 
 /* Mascota */
