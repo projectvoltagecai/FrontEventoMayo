@@ -1,0 +1,145 @@
+/* Contenedor principal para centrar y hacer wrap */
+.contenedor-principal-inicio-sesion {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    flex-wrap: wrap;
+}
+
+/* Contenedor que agrupa mascota y formulario */
+.contenedor-inicio-sesion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre elementos */
+}
+
+/* Imagen mascota */
+.mascota-bulbie {
+    width: 400px;
+}
+
+/* Logo */
+.logo-inicio-sesion {
+    width: 140px;
+}
+
+/* Contenedor logo + texto */
+.contenedor-logo {
+    display: flex;
+    width: 500px;
+}
+
+/* Texto LOG IN */
+.contenedor-texto-inicio-sesion {
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid #114a96;
+    height: 85px;
+    padding-left: 20px;
+}
+
+/* Formulario */
+.contenedor-formulario-inicio-sesion {
+    display: flex;
+    position: relative;
+    left: 35%;
+    width: 250px;
+    padding: 10px;
+}
+
+/* Botón login */
+.boton-inicio-sesion {
+    background-color: #114a96;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.boton-inicio-sesion:hover {
+    background-color: #0d3b7a;
+    transition: 0.5s;
+}
+/* Para pantallas pequeñas - móviles */
+@media (max-width: 600px) {
+    .contenedor-inicio-sesion {
+        flex-direction: column;
+        width: 90%;
+        padding: 10px;
+    }
+
+    .mascota-bulbie {
+        width: 40vw; /* Que ocupe 80% del ancho de la pantalla */
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .contenedor-logo {
+        width: 100%;
+        justify-content: center;
+        border-left: none;
+        padding: 10px 0;
+    }
+
+    .contenedor-texto-inicio-sesion {
+        border-left: none;
+        height: auto;
+        padding-left: 0;
+        margin-top: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contenedor-formulario-inicio-sesion {
+        left: 0;
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+/* Para tablets o pantallas medianas */
+@media (min-width: 601px) and (max-width: 900px) {
+    .contenedor-inicio-sesion {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 90%;
+    }
+
+    .mascota-bulbie {
+        width: 300px;
+    }
+
+    .contenedor-logo {
+        width: 400px;
+    }
+
+    .contenedor-formulario-inicio-sesion {
+        left: 0;
+        width: 300px;
+        padding: 10px;
+    }
+}
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.mensaje-error{
+    color: green;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+     animation: parpadeo 1.5s infinite;
+}

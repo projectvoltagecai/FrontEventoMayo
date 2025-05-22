@@ -1,0 +1,192 @@
+body,
+html,
+#root {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+}
+
+.app-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    width: 220px;
+    background: #fff;
+    border-right: 4px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0;
+    gap: 24px;
+}
+
+.sidebar-logo {
+    width: 90px;
+    margin-bottom: 32px;
+}
+
+.sidebar button {
+    width: 160px;
+    padding: 12px 0;
+    margin: 8px 0;
+    border: none;
+    border-radius: 24px;
+    background: #f2f2f2;
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sidebar button:hover {
+    background: #dbeafe;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0;
+    background: #fff;
+}
+
+.lesson-header {
+    background: #1976d2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 12px 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    align-self: flex-start;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 32px 80px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    max-width: 600px;
+    min-height: 350px;
+    position: relative;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row: span 1;
+}
+
+.skill img {
+    width: 64px;
+    height: 64px;
+    background: #33bbee;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.character-center {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-center img {
+    width: 140px;
+    height: auto;
+}
+
+.right-panel {
+    width: 340px;
+    background: #fff;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-left: 4px solid #222;
+}
+
+.top-stats {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.profile-box,
+.challenges-box {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.profile-title,
+.challenges-title {
+    color: #1976d2;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.challenges-box ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.challenges-box li {
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+.level-btn {
+    width: 100%;
+    background: #33bbee;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 0;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.level-btn:hover {
+    background: #1976d2;
+}

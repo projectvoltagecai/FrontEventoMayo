@@ -1,0 +1,44 @@
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  border-top: 2px solid black;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  min-width: 120px;
+  transition: background 0.3s ease;
+}
+
+.btn-back {
+  background-color: #f8f8f8;
+  border: 2px solid #ccc;
+  color: #000;
+}
+
+.btn-back:hover {
+  background-color: #e6e6e6;
+  transition: 0.5s;
+}
+
+.btn-continue {
+  background-color: #165ab6;
+  color: white;
+  border: none;
+}
+
+.btn-continue:hover {
+  background-color: #114a96;
+  transition: 0.5s;
+}

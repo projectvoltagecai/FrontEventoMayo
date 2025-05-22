@@ -1,0 +1,437 @@
+/* Reset básico para html y body */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Cambiado para permitir scroll vertical si es necesario */
+}
+
+/* Aplica box-sizing border-box a todos los elementos */
+* {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal de la aplicación */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  flex-direction: row; /* Por defecto horizontal */
+}
+
+/* Estilos para la barra lateral izquierda */
+.sidebar {
+  width: 200px;
+  min-width: 200px; /* Ancho mínimo para evitar que se comprima */
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-right: 2px solid black;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo para el título en el sidebar */
+.sidebar h2 {
+  color: #0077cc;
+  font-weight: bold;
+  margin: 10px 0 20px;
+}
+
+/* Estilo para botones del sidebar */
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 12px 8px;
+  margin: 5px 0;
+  border-radius: 20px;
+  border: #525050 1px solid;
+  background-color: #fffafa;
+  font-weight: bold;
+  color: #1e73be;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 12px; /* Reducido para mejor ajuste */
+}
+
+/* Efecto hover para botones del sidebar */
+.sidebar button:hover {
+  background-color: #ccc;
+}
+
+/* Estilo para el logo - REDUCIDO */
+.logo {
+  transform: scale(3);
+  transform-origin: center;
+}
+
+
+/* Estilos para el contenido principal */
+.main-content {
+  flex: 1;
+  position: relative;
+  background: #fdfdfd;
+  padding: 20px;
+  text-align: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Estilo para el título de la lección */
+.lesson-title {
+  background: #1e73be;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: fit-content;
+  max-width: 200px;
+  margin: 0 auto 20px;
+  font-weight: bold;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Área central para el robot */
+.central-area {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 120px);
+  min-height: 400px;
+}
+
+/* Robot en el centro exacto */
+.robot-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(150px, 25vw, 150px); /* Responsive entre 150px y 250px */
+  height: auto;
+  z-index: 2;
+}
+
+/* Estilo base para habilidades - ahora más responsive */
+.skill {
+  background: #00b0ff;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  width: clamp(80px, 12vw, 120px); /* Responsive entre 80px y 120px */
+  height: clamp(80px, 12vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: clamp(10px, 1.2vw, 14px);
+  text-decoration: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  background-color: #0088cc;
+}
+
+/* Posicionamiento responsive para las habilidades */
+.reading {
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.speaking {
+  top: 50%;
+  right: 15%;
+  transform: translate(50%, -50%);
+}
+
+.writing {
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.listening {
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+/* Panel derecho */
+.right-panel {
+  width: 250px;
+  min-width: 250px;
+  background: white;
+  padding: 15px;
+  border-left: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+/* Barra de puntuación */
+.score-bar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 16px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Estilo para texto de power */
+.power {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(210, 210, 13);
+}
+
+/* Estilo para texto de energy */
+.energy {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(13, 118, 210);
+}
+
+/* Estilo para texto de health */
+.health {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(237, 17, 17);
+}
+
+/* Estilos para caja de perfil y desafíos */
+.profile-box,
+.challenges-box {
+  width: 100%;
+  border: 1px solid black;
+  padding: 12px;
+  text-align: left;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Estilo para títulos en cajas */
+.profile-box h3,
+.challenges-box h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1e73be;
+  font-size: 14px;
+}
+
+/* Estilo para párrafos en caja de perfil */
+.profile-box p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #171717;
+}
+
+/* Estilo para imagen en caja de perfil */
+.profile-box img {
+  width: 60px; /* Reducido para mejor ajuste */
+  height: auto;
+  float: right;
+  margin-left: 15px;
+}
+
+/* Estilo para lista en caja de desafíos */
+.challenges-box ul {
+  padding-left: 15px;
+  margin: 0;
+}
+
+/* Estilo para items de lista en caja de desafíos */
+.challenges-box li {
+  margin-bottom: 6px;
+  color: #000;
+  font-size: 12px;
+}
+
+/* Botón de nivel */
+.level-button {
+  background: #00aaff;
+  color: white;
+  font-size: 16px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+.level-button:hover {
+  background-color: #008ecc;
+}
+
+.logo {
+  transform: scale(1.5);
+  transform-origin: center;
+}
+
+
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+
+/* Tablets grandes y pantallas medianas */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 160px;
+    min-width: 160px;
+    padding: 10px;
+  }
+  
+  .sidebar button {
+    padding: 10px 6px;
+    font-size: 11px;
+  }
+  
+  .logo {
+    width: 35px;
+  }
+  
+  .right-panel {
+    width: 220px;
+    min-width: 220px;
+    padding: 12px;
+  }
+  
+  .robot-center {
+    width: clamp(120px, 20vw, 200px);
+  }
+  
+  .skill {
+    width: clamp(70px, 10vw, 100px);
+    height: clamp(70px, 10vw, 100px);
+    font-size: clamp(9px, 1vw, 12px);
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    min-width: auto;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 2px solid black;
+  }
+  
+  .sidebar button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 8px 4px;
+    font-size: 10px;
+  }
+  
+
+  
+  .main-content {
+    min-height: auto;
+    padding: 15px;
+  }
+  
+  .central-area {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .right-panel {
+    width: 100%;
+    min-width: auto;
+    border-left: none;
+    border-top: 2px solid black;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .profile-box,
+  .challenges-box {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .score-bar {
+    width: 100%;
+    order: -1;
+  }
+  
+  .level-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 8px;
+  }
+  
+  .sidebar button {
+    font-size: 9px;
+    padding: 6px 2px;
+  }
+  
+  .logo {
+    width: 25px;
+  }
+  
+  .main-content {
+    padding: 10px;
+  }
+  
+  .lesson-title {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .central-area {
+    height: 40vh;
+    min-height: 250px;
+  }
+  
+  .robot-center {
+    width: clamp(100px, 25vw, 150px);
+  }
+  
+  .skill {
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(60px, 15vw, 80px);
+    font-size: clamp(8px, 2vw, 10px);
+    padding: 4px;
+  }
+  
+  .right-panel {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profile-box,
+  .challenges-box {
+    min-width: auto;
+  }
+  
+  .profile-box img {
+    width: 50px;
+  }
+  
+  .score-bar {
+    font-size: 14px;
+  }
+}

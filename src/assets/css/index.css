@@ -1,0 +1,158 @@
+/* Reset básico y variables para consistencia */
+:root {
+  --color-primary: #1959a0;
+  --color-primary-dark: #0f3c7d;
+  --color-text: black;
+  --color-bg: #f2f2f2;
+  --font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 30px;
+}
+
+/* Logo responsive */
+.logo {
+  transform: scale(3);
+  transform-origin: center;
+}
+
+/* Contenedor de texto */
+.contenedor-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Texto de bienvenida */
+.texto-bienvenida {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Estilo común para botones */
+.btn-empezar-ahora,
+.btn-tengo-cuenta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 8px 15px;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  min-height: 40px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Botón principal */
+.btn-empezar-ahora {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  margin-bottom: 15px;
+}
+
+.btn-empezar-ahora:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Botón secundario */
+.btn-tengo-cuenta {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-tengo-cuenta:hover {
+  background-color: #e6e6e6;
+  transform: translateY(-2px);
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+  .contenedor-principal {
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .texto-bienvenida{
+    padding-top:50px;
+  }
+  
+  .logo {
+    max-width: 250px;
+    margin-bottom: 40px;
+  }
+  
+  .btn-empezar-ahora,
+  .btn-tengo-cuenta {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-principal {
+    padding: 15px;
+  }
+  
+  .texto-bienvenida{
+    padding-top:50px;
+  }
+  .logo {
+    max-width: 200px;
+    margin-bottom: 40px;
+  }
+  
+.texto-bienvenida{
+    padding-top:50px;
+  }
+  
+  .btn-empezar-ahora,
+  .btn-tengo-cuenta {
+    max-width: 200px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .logo {
+    max-width: 150px;
+    margin-bottom: 40px;
+  }
+  .texto-bienvenida{
+    padding-top:50px;
+  }
+  .btn-empezar-ahora,
+  .btn-tengo-cuenta {
+    max-width: 180px;
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+}

@@ -1,0 +1,149 @@
+/*General layout */
+body, html, #root {
+  margin: 0;                     /* Elimina márgenes predeterminados */
+  padding: 0;                    /* Elimina relleno predeterminado */
+  height: 100%;                  /* Altura completa para que se expanda */
+  font-family: Arial, sans-serif; /* Fuente base */
+  background-color: white;       /* Fondo blanco para toda la página */
+}
+
+/* Wrapper principal (divide en dos columnas)*/
+.profile-wrapper {
+  display: flex;                /* Flexbox para colocar columnas */
+  height: 100vh;                /* Altura completa de la ventana */
+  width: 100%;                  /* Ancho completo */
+}
+
+/*Columna izquierda - Robot*/
+.profile-left {
+  flex: 1;                      /* Ocupa 1 parte de 3 */
+  background-color: white;      /* Fondo blanco */
+  display: flex;                /* Centra al robot */
+  justify-content: center;      /* Centrado horizontal */
+  align-items: center;          /* Centrado vertical */
+}
+
+.robot {
+  width: 70%;                   /* Escala del robot dentro de su contenedor */
+  height: auto;                 /* Mantiene la proporción de la imagen */
+}
+
+/* Columna derecha - Formulario */
+.profile-right {
+  flex: 2;                      /* Ocupa 2 partes de 3 */
+  display: flex;                /* Flex para apilar elementos */
+  flex-direction: column;       /* Coloca elementos verticalmente */
+  justify-content: center;      /* Centra el formulario verticalmente */
+  align-items: flex-start;      /* Alinea el contenido a la izquierda */
+  padding-left: 4rem;           /* Separación desde el borde izquierdo */
+}
+
+/* Encabezado con logo y título*/
+.header {
+  display: flex;                /* Coloca logo y texto uno al lado del otro */
+  align-items: center;          /* Centra verticalmente */
+  gap: 1rem;                    /* Espacio entre logo y textos */
+  margin-bottom: 2rem;          /* Espacio debajo del encabezado */
+}
+
+.logo {
+  width: 60px;                  /* Ancho fijo del logo */
+  height: auto;                 /* Escala automática para mantener proporción */
+}
+
+.header h2 {
+  color: #1f4f93;               /* Azul oscuro */
+  font-size: 2rem;              /* Tamaño del título */
+  margin: 0;                    /* Elimina margen predeterminado */
+}
+
+.header p {
+  margin: 0;                    /* Elimina margen predeterminado */
+  color: black;                 /* Color del subtítulo */
+  font-size: 1.2rem;            /* Tamaño del subtítulo */
+}
+
+/*Formulario*/
+.form {
+  display: flex;                /* Flexbox */
+  flex-direction: column;       /* Apila las filas verticalmente */
+  gap: 1.5rem;                  /* Espacio entre las filas de input */
+  width: 100%;                  /* Ocupa todo el ancho disponible */
+  max-width: 650px;             /* Máximo ancho del formulario */
+}
+
+.input-row {
+  display: flex;                /* Flex horizontal para 2 inputs por fila */
+  gap: 1.5rem;                  /* Espacio entre inputs */
+}
+
+.input-row input {
+  flex: 1;                      /* Ambos inputs ocupan el mismo espacio */
+  padding: 1rem;                /* Altura del input */
+  font-size: 1rem;              /* Tamaño del texto */
+  border-radius: 25px;          /* Bordes redondeados */
+  border: 1px solid #ccc;       /* Borde gris claro */
+  background-color: #f0f0f0;    /* Fondo gris claro */
+  color: #1f4f93;               /* Texto azul */
+  font-weight: bold;            /* Texto en negrita */
+  outline: none;                /* Elimina borde al enfocar */
+}
+
+/*Botón "Crear Cuenta"*/
+.create-button {
+  margin-top: 2rem;             /* Espacio encima del botón */
+  width: 100%;                  /* Botón ocupa todo el ancho disponible */
+  padding: 1.1rem;              /* Alto del botón */
+  font-size: 1.1rem;            /* Tamaño del texto */
+  background-color: #1f4f93;    /* Fondo azul */
+  color: white;                 /* Texto blanco */
+  border: none;                 /* Sin borde */
+  border-radius: 25px;          /* Bordes redondeados */
+  font-weight: bold;            /* Texto en negrita */
+  cursor: pointer;              /* Cursor tipo pointer */
+}
+
+/*Footer - Botones "Back" y "Continue"*/
+.footer-buttons {
+  width: 100%;                  /* Ocupa todo el ancho disponible */
+  position: absolute;           /* Posicionado en la parte inferior de .container */
+  bottom: 20px;                 /* Separado 20px del borde inferior */
+  left: 0;                      /* Alineado al borde izquierdo */
+  display: flex;                /* Flexbox para botones */
+  justify-content: space-between; /* Uno a la izquierda y otro a la derecha */
+  padding: 0 3rem;              /* Espaciado interno lateral */
+  box-sizing: border-box;       /* Incluye padding dentro del ancho total */
+}
+
+.back, .continue {
+  padding: 0.8rem 2.5rem;       /* Espaciado interno de botones */
+  font-size: 1rem;              /* Tamaño del texto */
+  font-weight: bold;            /* Texto en negrita */
+  border: none;                 /* Sin borde (excepto en .back) */
+  border-radius: 15px;          /* Bordes redondeados */
+  cursor: pointer;              /* Cursor tipo pointer */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilo para botón "Back" */
+.back {
+  background-color: #f0f0f0;    /* Fondo gris claro */
+  color: #1f4f93;               /* Texto azul */
+  border: 2px solid #1f4f93;    /* Borde azul */
+}
+
+/* Estilo para botón "Continue" */
+.continue {
+  background-color: #1f4f93;    /* Fondo azul */
+  color: white;                 /* Texto blanco */
+  border: none;                 /* Sin borde */
+}
+
+/* Hover para los botones */
+.back:hover {
+  background-color: #e2e8f0;    /* Color más claro al pasar el mouse */
+}
+
+.continue:hover {
+  background-color: #163d73;    /* Azul más oscuro al pasar el mouse */
+}
